@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} search results{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <h1>search results for </h1>
+
+    {% for post in allposts %}
+
+    <div class="col-md-6 p-0">
+        <div
+            class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{post.title}}</strong>
+                <h3 class="mb-0">by {{post.author}} on {{post.timestamp}}</h3>
+
+                <p class="card-text mb-auto">{{post.content|truncatechars:7}}</p>
+
+                <div>
+                    <a href="{{post.slug}}" role="button" class="btn btn-primary btn-lg-sm mt-2">Continue reading</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock body %}
