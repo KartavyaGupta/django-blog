@@ -76,7 +76,7 @@ def handlesignup(request):
 
 
 def handlelogin(request):
-    print(vars(request))
+    # print(vars(request))
     if request.method == 'POST':
         username = request.POST.get('loginusername')
         password = request.POST.get('loginpassword')
@@ -94,7 +94,7 @@ def handlelogin(request):
 
 
 def handlelogout(request):
-    print("logout")
+    # print("logout")
     logout(request)
     messages.success(request, 'logout successful')
     return redirect('home')
