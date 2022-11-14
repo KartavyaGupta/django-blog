@@ -53,8 +53,6 @@
                     <div>
                         {{comment.blogcomment}}
                     </div>
-
-                    {% if log_user.is_authenticated %}
                     <div class="reply mx-0">
 
                         <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
@@ -98,15 +96,9 @@
                         </div>
 
                     </div>
-                    {% else %}
-                    <div class="container w-75 p-3">
-                        please login to reply to a comment
-                    </div>
-                    {% endif %}
 
                 </div>
             </div>
-            
             {% endfor %}
         </div>
     </div>
