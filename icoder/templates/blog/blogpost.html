@@ -5,44 +5,47 @@
 {% load extras %}
 
 <div style="font-family: 'Sono', sans-serif;">
-    <div class=" container w-75 p-3 mt-4">
-        <div class="col-md-8 blog-main">
-            <div class="blog-post">
-                <h2 class="blog-post-title">{{post.title}}</h2>
-                <p class="blog-post-meta"> by {{post.author}} [ {{post.views}} views ]</p>
-                <small>on {{post.timestamp}}</small>
-                <p>{{post.content|safe}}</p>
+    <div class="text">
+        <div class=" container w-75 p-3 mt-4">
+            <div class="col-md-8 blog-main">
+                <div class="blog-post">
+                    <p class="h2 blog-post-title">{{post.title}}</p>
+                    <p class="blog-post-meta"> by {{post.author}} [ {{post.views}} views ]<span><small> on {{post.timestamp}}</small></span></p>
+                    
+                    <p>{{post.content|safe}}</p>
+                </div>
             </div>
         </div>
     </div>
-
-    <hr>
-
     {% if log_user.is_authenticated %}
-    <div class="container w-75 p-3">
-        <form method="post" action="/blog/postcomment">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="usercomment"></label>
-                <input type="text" class="form-control" id="usercomment" name="usercomment"
-                    placeholder="type your comment">
+    
+    <div class="ml-4">
+        
+        <div class="container w-75 p-3">
+            <form method="post" action="/blog/postcomment">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="usercomment"></label>
+                    <input type="text" class="form-control" id="usercomment" name="usercomment"
+                        placeholder="type your comment">
 
-                <input type="hidden" name="postsno" value="{{post.sno}}">
-                <input type="hidden" name="parentcommentsno" value="">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                    <input type="hidden" name="postsno" value="{{post.sno}}">
+                    <input type="hidden" name="parentcommentsno" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
     {% else %}
     <div class="container w-75 p-3">
         please login to post a comment
     </div>
     {% endif %}
-
+    
     <!-- {{comments}}     -->
     <div class="ml-3">
         <div class="container w-75 p-3">
-            <h2>comments ( count: {{comments.count}}) </h2>
+            <h3>comments [{{comments.count}}] </h3>
             {% for comment in comments %}
             <div class="row mt-3">
                 <div class="col-md-1 "><img class="rounded mx-auto d-block w-100 p-1"
@@ -55,7 +58,7 @@
                     </div>
 
                     {% if log_user.is_authenticated %}
-                    <div class="reply mx-0">
+                    <div class="reply mx-0 ">
 
                         <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
                             data-target="#replybox{{comment.blogsno}}">
@@ -106,7 +109,7 @@
 
                 </div>
             </div>
-            
+
             {% endfor %}
         </div>
     </div>
