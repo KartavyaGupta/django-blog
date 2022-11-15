@@ -9,7 +9,7 @@ from django.utils.timezone import now
 class post(models.Model):
     sno=models.AutoField(primary_key=True)
     title=models.CharField(max_length=50)
-    content=models.TextField(max_length=500)
+    content=models.TextField(max_length=5000)
     slug=models.CharField(max_length=20)
     author=models.CharField(max_length=50)
     timestamp=models.DateTimeField()
