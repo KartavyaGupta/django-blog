@@ -12,7 +12,8 @@
                     <p class="h2 blog-post-title">{{post.title}}</p>
                     <p class="blog-post-meta"> by {{post.author}} [ {{post.views}} views ]<span><small> on {{post.timestamp}}</small></span></p>
                     
-                    <p>{{post.content|safe}}</p>
+                    <!-- <p>{{post.content|safe}}</p> -->
+                    <p>{{post.content}}</p>
                 </div>
             </div>
         </div>
@@ -56,7 +57,7 @@
                     <div>
                         {{comment.blogcomment}}
                     </div>
-
+                    
                     {% if log_user.is_authenticated %}
                     <div class="reply mx-0 ">
 
@@ -64,7 +65,7 @@
                             data-target="#replybox{{comment.blogsno}}">
                             reply
                         </button>
-
+                        <br>
                         <div class="collapse" id="replybox{{comment.blogsno}}">
                             <div class="card card-body my-2">
                                 <form method="post" action="/blog/postcomment">
@@ -83,9 +84,9 @@
                         </div>
 
                         <div class="replies  my-2 ">
-
+                            
                             {% for reply in replydict|get_val:comment.blogsno %}
-
+                            
                             <div class=" col-md-1 "><img class=" rounded mx-auto d-block w-100 p-1 "
                                     style=" width: 60px; border: 1px solid black; border-radius: 10px;"
                                     src="/static/img/image.png" alt="user img">
